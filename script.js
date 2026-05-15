@@ -102,7 +102,7 @@ ${data.irl || "Non renseignée"}`
             }
         ],
         footer: {
-            text: "💼 Système de candidature - enewfa"
+            text: "💼 Système de candidature - ViceNew"
         },
         timestamp: new Date()
     }]
