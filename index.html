@@ -3,120 +3,148 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Candidature Staff - ViceNew</title>
+<title>Candidature Staff — ViceNew</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header>
-  <div class="header-title">Candidature ViceNew</div>
+<!-- Ambient blobs -->
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
 
-  <!-- 🔥 Bouton Admin en haut -->
-  <button class="admin-btn-top" onclick="openAdmin()">Admin</button>
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-dot"></span>
+      <span class="logo-text">ViceNew</span>
+    </div>
+    <div class="header-badge">Recrutement Staff</div>
+  </div>
 </header>
 
-<div class="container">
+<main class="container">
 
-  <h1 class="title">Bienvenue sur le système de candidature de <span>enewfa</span></h1>
+  <!-- Hero -->
+  <section class="hero">
+    <p class="hero-eyebrow">Rejoins l'équipe</p>
+    <h1 class="hero-title">Candidature<br><em>Staff</em></h1>
+    <p class="hero-sub">Remplis le formulaire ci-dessous avec soin. Chaque réponse compte.</p>
+    <!-- Progress bar -->
+    <div class="progress-wrap">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="progress-labels">
+      <span id="labelStep1" class="prog-label active">1 — Présentation</span>
+      <span id="labelStep2" class="prog-label">2 — Candidature</span>
+    </div>
+  </section>
 
-  <!-- PAGE 1 -->
-<div id="step1" class="card step">
-  <h2>Présentation IRL</h2>
-
-  <div class="inputs">
-    <label>Présentation IRL</label>
-    <textarea id="irl" placeholder="Présente-toi brièvement IRL"></textarea>
-
-    <label>Prénom</label>
-    <input id="prenom" type="text" placeholder="Ex : Lucas">
-
-    <label>Âge</label>
-    <input id="age" type="number" placeholder="Ex : 18">
-
-    <label>Pseudo Discord</label>
-    <input id="discord" type="text" placeholder="Ex : Sacha#0001">
-
-    <label>ID Discord</label>
-    <input id="discordId" type="text" placeholder="Ex : 283910293810293">
-
-    <label>Disponibilités</label>
-    <textarea id="dispos" placeholder="Ex : Semaine 18h-23h / WE libre"></textarea>
+  <!-- STEP 1 -->
+  <div id="step1" class="card step">
+    <div class="card-header">
+      <span class="step-tag">Étape 1 / 2</span>
+      <h2 class="card-title">Présentation IRL</h2>
+    </div>
+    <div class="fields">
+      <div class="field-group half">
+        <label for="prenom">Prénom</label>
+        <input id="prenom" type="text" placeholder="Ex : Lucas">
+      </div>
+      <div class="field-group half">
+        <label for="age">Âge</label>
+        <input id="age" type="number" placeholder="Ex : 18">
+      </div>
+      <div class="field-group half">
+        <label for="discord">Pseudo Discord</label>
+        <input id="discord" type="text" placeholder="Ex : Sacha#0001">
+      </div>
+      <div class="field-group half">
+        <label for="discordId">ID Discord</label>
+        <input id="discordId" type="text" placeholder="Ex : 2839102938...">
+      </div>
+      <div class="field-group full">
+        <label for="irl">Présentation IRL</label>
+        <textarea id="irl" placeholder="Présente-toi brièvement (qui tu es, ta vie, ta personnalité…)"></textarea>
+      </div>
+      <div class="field-group full">
+        <label for="dispos">Disponibilités</label>
+        <textarea id="dispos" placeholder="Ex : Semaine 18h–23h / WE libre"></textarea>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-primary" onclick="nextStep()">Suivant <span class="btn-arrow">→</span></button>
+    </div>
   </div>
 
-  <button class="btn-next" onclick="nextStep()">Suivant ➜</button>
-</div>
-
-
-<!-- PAGE 2 -->
-<div id="step2" class="card step" style="display:none;">
-  <h2>Administration</h2>
-
-  <div class="inputs">
-
-    <label>Poste souhaité</label>
-    <select id="poste" onchange="toggleAutrePoste()">
-      <option value="">— Sélectionnez un poste —</option>
-      <option value="Helpeur">Helpeur</option>
-      <option value="Modérateur">Modérateur</option>
-      <option value="Gérant Staff">Gérant Staff</option>
-      <option value="Gérant Légal">Gérant Légal</option>
-      <option value="Gérant Illégal">Gérant Illégal</option>
-      <option value="Gérant Global">Gérant Global</option>
-      <option value="Autre">Autre</option>
-    </select>
-        
-    <!-- Champ affiché seulement si "Autre" -->
-    <div id="autrePosteBox" style="display:none;">
-      <label>Précisez le poste</label>
-      <input id="autrePoste" type="text" placeholder="Ex : Développeur, Graphiste...">
+  <!-- STEP 2 -->
+  <div id="step2" class="card step" style="display:none;">
+    <div class="card-header">
+      <span class="step-tag">Étape 2 / 2</span>
+      <h2 class="card-title">Candidature</h2>
     </div>
-
-      <label>Motivations</label>
-      <textarea id="motivations"></textarea>
-
-      <label>Pourquoi vous ?</label>
-      <textarea id="why"></textarea>
-
-      <label>Qualités</label>
-      <textarea id="qualites"></textarea>
-
-      <label>Qu'est ce qu'un Modérateur / Community Manager</label>
-      <textarea id="definition"></textarea>
-
-      <label>Expérience</label>
-      <textarea id="experience"></textarea>
-
-      <label>Ajouts</label>
-      <textarea id="extra"></textarea>
+    <div class="fields">
+      <div class="field-group full">
+        <label for="poste">Poste souhaité</label>
+        <div class="select-wrap">
+          <select id="poste" onchange="toggleAutrePoste()">
+            <option value="">— Sélectionnez un poste —</option>
+            <option value="Helpeur">Helpeur</option>
+            <option value="Modérateur">Modérateur</option>
+            <option value="Gérant Staff">Gérant Staff</option>
+            <option value="Gérant Légal">Gérant Légal</option>
+            <option value="Gérant Illégal">Gérant Illégal</option>
+            <option value="Gérant Global">Gérant Global</option>
+            <option value="Autre">Autre</option>
+          </select>
+          <span class="select-arrow">▾</span>
+        </div>
+      </div>
+      <div id="autrePosteBox" class="field-group full" style="display:none;">
+        <label for="autrePoste">Précisez le poste</label>
+        <input id="autrePoste" type="text" placeholder="Ex : Développeur, Graphiste…">
+      </div>
+      <div class="field-group full">
+        <label for="motivations">Motivations</label>
+        <textarea id="motivations" placeholder="Qu'est-ce qui te pousse à rejoindre le staff ViceNew ?"></textarea>
+      </div>
+      <div class="field-group full">
+        <label for="why">Pourquoi vous ?</label>
+        <textarea id="why" placeholder="Qu'est-ce qui fait de toi le candidat idéal ?"></textarea>
+      </div>
+      <div class="field-group full">
+        <label for="qualites">Qualités</label>
+        <textarea id="qualites" placeholder="Liste tes 3 principales qualités"></textarea>
+      </div>
+      <div class="field-group full">
+        <label for="definition">Définition Modérateur / Community Manager</label>
+        <textarea id="definition" placeholder="Comment définirais-tu ce rôle ?"></textarea>
+      </div>
+      <div class="field-group full">
+        <label for="experience">Expérience</label>
+        <textarea id="experience" placeholder="Expériences passées en modération, gestion de communauté…"></textarea>
+      </div>
+      <div class="field-group full">
+        <label for="extra">Informations supplémentaires</label>
+        <textarea id="extra" placeholder="Tout ce que tu souhaites ajouter…"></textarea>
+      </div>
     </div>
-
-    <div class="btn-row">
-      <button class="btn-back" onclick="prevStep()">⬅ Retour</button>
-      <button class="btn-send" onclick="sendForm()">Envoyer 🚀</button>
+    <div class="card-footer split">
+      <button class="btn btn-ghost" onclick="prevStep()"><span class="btn-arrow">←</span> Retour</button>
+      <button class="btn btn-primary btn-send" onclick="sendForm()">Envoyer <span class="btn-arrow">🚀</span></button>
     </div>
-
     <p id="status" class="status"></p>
   </div>
 
-  <!-- PANEL ADMIN ✔ tout en bas -->
-  <div id="adminPanel"></div>
+</main>
 
-</div>
+<footer>
+  <p>© 2025 ViceNew — Système de candidature</p>
+</footer>
 
 <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
